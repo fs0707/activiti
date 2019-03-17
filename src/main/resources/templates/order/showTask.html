@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        table,tr,th,td{
+            border: 1px black solid;
+            border-collapse: collapse;
+
+        }
+
+        a{
+            text-decoration: none;
+            color:blue;
+            font-weight: bold;
+        }
+        a:hover{
+            color: red;
+        }
+    </style>
+</head>
+<body style="margin:0px;">
+<Table width="100%" align="center">
+    <Tr>
+        <Th>编号</Th>
+        <Th>任务名称</Th>
+        <Th>采购单名称</Th>
+        <Th>采购金额</Th>
+        <Th>采购详情</Th>
+        <Th>创建时间</Th>
+        <Th>办理</Th>
+    </Tr>
+
+    <Tr align="center" th:each="k,st:${list}">
+            <Td th:text="${st.count}"></Td>
+            <Td th:text="${k.taskName}"></Td>
+            <Td th:text="${k.name}"></Td>
+            <Td th:text="${k.price}"></Td>
+            <Td th:text="${k.content}"></Td>
+            <Td th:text="${k.createtime}">
+            </Td>
+            <Td>
+                <span th:if="${k.taskDef eq 'createPurOrder'}">
+                    <A th:href="@{|/complete/${k.taskId}|}">提交采购单</A>
+                </span>
+                <span th:if="${k.taskDef eq 'firstAudit'}">
+                    <A th:href="@{|/complete/${k.taskId}|}">部门经理审核</A>
+                </span>
+                <span th:if="${k.taskDef eq 'secondAudit'}">
+                    <A th:href="@{|/complete/${k.taskId}|}">校长审核</A>
+                </span>
+                <span th:if="${k.taskDef eq 'thirdAudit'}">
+                    <A th:href="@{|/complete/${k.taskId}|}">财务审核</A>
+                </span>
+
+            </Td>
+        </Tr>
+
+</Table>
+
+
+</body>
+</html>

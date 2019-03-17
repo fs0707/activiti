@@ -1,0 +1,21 @@
+server:
+  port: 9999
+spring:
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot
+    username: root
+    password: root
+  activiti:
+    database-schema: true
+    check-process-definitions: false
+  servlet:
+    multipart:
+      max-file-size: 10mb
+      max-request-size: 20mb
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  config-location: classpath:mybatis-config.xml

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.java.dao.PurOrderMapper">
+
+       <insert id="createOrder" parameterType="m">
+        insert into pur_order values(#{id},#{name},#{price},#{content},#{createTime},#{status},#{userId},#{processInstance_id},#{endtime})
+    </insert>
+
+    <!-- 查询业务数据 -->
+    <select id="findByBusinessKey" resultType="java.util.HashMap">
+		select * from pur_order where id=#{id}
+	</select>
+
+</mapper>

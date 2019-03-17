@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/jquery-easyui-1.2.6/themes/default/easyui.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/jquery-easyui-1.2.6/themes/icon.css}">
+
+    <script type="text/javascript" th:src="@{/jquery-easyui-1.2.6/jquery-1.7.2.min.js}"></script>
+    <script type="text/javascript" th:src="@{/jquery-easyui-1.2.6/jquery.easyui.min.js}"></script>
+    <script type="text/javascript" th:src="@{/jquery-easyui-1.2.6/locale/easyui-lang-zh_CN.js}"></script>
+    <style type="text/css">
+        a{
+            text-align: center;
+            text-decoration: none;
+            color: blue;
+        }
+        a:hover{
+            color:red;
+        }
+
+        html,body{
+            height: 100%;
+        }
+    </style>
+</head>
+<body style="margin: 0px;">
+
+
+<table style="width: 100%;height: 100%" border="1" align="center">
+    <Tr height="100px">
+        <Td colspan="2">
+            用户名:<b>[[${session.userId}]]</b>
+            &nbsp;
+            <a href="/logout"><B>注销</B></a>
+        </Td>
+    </Tr>
+    <Tr align="center">
+        <td  valign="top" width="15%">
+
+            <div class="easyui-accordion" animate="true" title="菜单" fit="true">
+                <div iconCls="icon-add" title="部署管理" style="padding: 5px">
+                   <A th:href="@{/forward/process/deployProcess}" target="right">部署流程定义</A>
+                </div>
+                <div iconCls="icon-edit" title="采购管理" style="padding: 5px">
+                    <A th:href="@{/forward/order/createOrder}" target="right">创建采购单</A><Br>
+                    <A th:href="@{/showTask}" target="right">处理采购单</A><Br>
+                </div>
+            </div>
+        </td>
+        <td>
+            <iframe name="right" th:src="@{/forward/process/right}" style="width: 100%;height: 100%;" frameborder="0"></iframe>
+        </td>
+    </Tr>
+</table>
+</body>
+</html>
